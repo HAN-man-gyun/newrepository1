@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace newRepository1
 {
     public class Program
-    {
+    { //
         static void Main(string[] args)
         {
             // { 2023. 07. 03. Add user input /Beta}
@@ -31,15 +31,19 @@ namespace newRepository1
             public float Inch
             {
                 get { return Centimeter * ONE_INCH; }
-                private set { Centimeter =(int)(value / ONE_INCH); }
+            // {2023.07.03. Add private _SetInch function / Gamma}
+                private set { this._SetInch(value); }
             }
 
-        public Ruler(int cmValue) { Centimeter = cmValue; }
-        
-        public void Run()
-        {
-            Console.WriteLine($"{this.Centimeter}cm는 {this.Inch}inch입니다.");
-        }
+            public Ruler(int cmValue) { Centimeter = cmValue; }
+
+            public void Run()
+            {
+                Console.WriteLine($"{this.Centimeter}cm는 {this.Inch}inch입니다.");
+            }
+
+            private void _SetInch(float inchValue) { Centimeter = (int)(inchValue / ONE_INCH); }
+            // {2023.07.03. Add private _SetInch function / Gamma}
         }
     }
 }
